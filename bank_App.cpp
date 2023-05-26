@@ -56,9 +56,7 @@ int main()
 // Function for showing balance
 double showBalance(double balance)
 {
-    // double new_balance;
-    // new_balance = balance;
-    cout << "Alright, your balance is : " << balance << endl; 
+    cout << "Alright, your balance is : " << balance << endl;
     return balance;
 }
 
@@ -66,31 +64,12 @@ double showBalance(double balance)
 double deposit(double balance)
 {
     double deposit_value;
-    double new_balance;
-    char final;
 
     cout << "How much will you be depositing today ?" << endl;
     cin >> deposit_value;
-    cout << "Shall we finalize the deposit [Y / N] or terminate completely [T] ?\n"
-         << endl;
-    cin >> final;
 
-    if (final == 'Y' || final == 'y')
-    {
-        cout << "Finalizing your deposit..." << endl;
-        cout << "You have successfully deposited $" << deposit_value << endl;
-        // new_balance = balance + deposit_value;
-        // cout << "Great, your new balance after your deposit is: $" << new_balance << endl;
-    }
-    else if (final == 'N' || final == 'n')
-    {
-        cout << "Alright, you can proceed" << endl;
-        deposit(balance);
-    }
-    else
-    {
-        cout << "Exiting..." << endl;
-    }
+    cout << "Finalizing your deposit..." << endl;
+    cout << "You have successfully deposited $" << deposit_value << endl;
 
     return deposit_value;
 };
@@ -99,50 +78,19 @@ double deposit(double balance)
 double withdrawal(double balance)
 {
     double withdrawal_value;
-    double new_balance;
-    char final;
-    char response;
 
     cout << "How much will you be withdrawing today ?" << endl;
     cin >> withdrawal_value;
-    cout << "Shall we finalize the withdrawal [Y / N] or terminate completely [T] ?" << endl;
-    cin >> final;
 
     if (balance < withdrawal_value)
     {
         cout << "Please for balance is insufficient for a withdrawal of:  $" << withdrawal_value << endl;
-        cout << "Would you like to enter another amount instead [Y] or terminate the withdrawal process completely [T] ?" << endl;
-        cin >> response;
-
-        if (response == 'Y')
-        {
-            withdrawal(balance);
-        }
-        else
-        {
-            cout << "Exiting... \n" << "Done." << endl;
-        }
-        
+        return 0;
     }
     else
     {
-        if (final == 'Y' || final == 'y')
-        {
-            cout << "Finalizing your withdrawal..." << endl;
-            cout << "You have successfully withdrawn: $" << withdrawal_value << endl;
-            // new_balance = balance - withdrawal_value;
-            // cout << "Great, your new balance after your withdrawal is: $" << new_balance << endl;
-        }
-        else if (final == 'N' || final == 'n')
-        {
-            cout << "Alright, thanks" << endl;
-            withdrawal(balance);
-        }
-        else
-        {
-            cout << "Exiting..." << endl;
-        }
+        cout << "Finalizing your withdrawal..." << endl;
+        cout << "You have successfully withdrawn: $" << withdrawal_value << endl;
+        return withdrawal_value;
     }
-
-    return withdrawal_value;
 }
